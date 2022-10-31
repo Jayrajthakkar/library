@@ -1,0 +1,55 @@
+<odoo>
+	<record id='view_librarian_tree' model='ir.ui.view'> 
+		 <field name="name">librarian.tree</field>
+         <field name="model">librarian.librarian</field>
+         <field name="arch" type="xml">
+         	<tree>
+         		<field name='name'/>
+         	</tree>
+         </field>
+	</record>
+
+	<record id='view_librarian_form' model='ir.ui.view'> 
+		 <field name="name">librarian.form</field>
+         <field name="model">librarian.librarian</field>
+         <field name="arch" type="xml">
+         	<form>
+         		<sheet>
+         			<group>
+         			<field name='name'/>
+         			<field name='gender'/>
+         			<field name='dob'/>
+         			<field name='age'/>
+         			<field name='date_of_joining'/>
+         			<field name='current_experience'/>
+         			</group>
+         		</sheet>
+         	</form>
+         </field>
+	</record>
+
+
+#Action
+
+	<record id="action_librarian"
+		model="ir.actions.act_window">
+		<field name="name">Librarian</field>
+		<field name="res_model">librarian.librarian</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+
+#Menu
+
+	
+		<menuitem id = "library_main_menu" 
+			name ="Library" 
+			sequence = "0"/>
+
+		<menuitem id = "librarian_menu"
+				name = "Librarian"
+				parent="library_main_menu"
+				action="action_librarian"/>
+
+
+</odoo>

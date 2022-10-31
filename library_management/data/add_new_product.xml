@@ -1,0 +1,13 @@
+<odoo>
+    <data>
+<record id="commission_my_product" model="product.template">
+            <field name="name"> My Commssion product</field>
+            <field name="categ_id" ref="product_category_5"/>
+            <field name="standard_price">500.0</field>
+            <field name="list_price">750.0</field>
+            <field name="detailed_type">service</field>
+
+            <field name="uom_id" ref="uom.product_uom_unit"/>
+        </record>
+    </data>
+      </odoo>  

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate='0'>
+        <template  id="invoice_inhrit_template" inherit_id="account.report_invoice_document">
+            <xpath expr="//p[@name='payment_communication']" position='replace'>
+                <p> </p>
+            </xpath>
+
+            <xpath expr="//p[@name='payment_term']" position='after'>
+                <br></br>
+                <br></br>
+                <div class="row mt-4 mb-4">
+                   <div class="col-auto col-3 mw-100 mb-2" name="prepared_by">
+                        <strong>Prepared By:</strong>
+                    </div>
+                    <div class="col-auto col-3 mw-100 mb-2"  name="received_by">
+                        <strong>Received By:</strong>
+                    </div>
+                </div>
+
+            </xpath>   
+
+        </template>
+    </data>
+</odoo>

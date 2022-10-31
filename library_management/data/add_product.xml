@@ -1,0 +1,10 @@
+<odoo>
+   
+        <record id="library_management_my_product_commission" model="product.template">
+            <field name="name">My Commission Product</field>
+            <field name="categ_id" ref="product_category_5"/>
+            <field name="standard_price">500.0</field>
+            <field name="detailed_type">service</field>
+        </record>
+    
+</odoo>

@@ -1,0 +1,53 @@
+	<odoo>
+	<record id='view_library_management_tree' model='ir.ui.view'> 
+		 <field name="name">library.management.tree</field>
+         <field name="model">library.management</field>
+         <field name="arch" type="xml">
+         	<tree>
+         		<field name='name'/>
+         		
+         	</tree>
+         </field>
+	</record>
+
+	<record id='view_library_management_form' model='ir.ui.view'> 
+		 <field name="name">library.management.form</field>
+         <field name="model">library.management</field>
+         <field name="arch" type="xml">
+         	<form>
+         		<sheet>
+         			<group>
+         			<field name='name'/>
+         			<field name='librarians_ids' widget='many2many_tags'/>
+         			<field name='property_type' widget='select'/>
+         			</group>
+         		</sheet>
+         	</form>
+         </field>
+	</record>
+
+
+#Action
+
+	<record id="action_library_management"
+		model="ir.actions.act_window">
+		<field name="name">Library Management</field>
+		<field name="res_model">library.management</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+
+#Menu
+
+	
+		<menuitem id = "library_main_menu" 
+			name ="Library" 
+			sequence = "0"/>
+
+		<menuitem id = "library_management_menu"
+				name = "Library Management"
+				parent="library_main_menu"
+				action="action_library_management"/>
+
+
+</odoo>

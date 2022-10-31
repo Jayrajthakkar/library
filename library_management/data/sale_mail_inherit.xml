@@ -1,0 +1,47 @@
+
+
+<odoo>
+        <function name="write" model="ir.model.data">
+        <function name="search" model="ir.model.data">
+            <value eval="[('name','=','
+                '),('module','=','sale')]"/>
+        </function>
+         <value eval=" {'noupdate': False} "/>
+    </function>
+        <record id="sale.email_template_edi_sale" model="mail.template">
+            <field name="body_html" type="html">
+            <div style="margin: 0px; padding: 0px;">
+            <p style="margin: 0px; padding: 0px; font-size: 12px;">
+                Hello,
+                <br/><br/>
+                Hello World
+                <br/><br/>
+                <t t-set="transaction" t-value="object.get_portal_last_transaction()"/>
+                Your order <strong t-out="object.name or ''">S00049</strong> amounting in <strong t-out="format_amount(object.amount_total, object.currency_id) or ''">$ 10.00</strong>
+                <t t-if="object.state == 'sale' or (transaction and transaction.state in ('done', 'authorized'))">
+                    has been confirmed.<br/>
+                    Thank you for your trust!
+                </t>
+                <t t-elif="transaction and transaction.state == 'pending'">
+                    is pending. It will be confirmed when the payment is received.
+                    <t t-if="object.reference">
+                        Your payment reference is <strong t-out="object.reference or ''"></strong>.
+                    </t>
+                </t>
+                <br/><br/>
+                Do not hesitate to contact us if you have any questions.
+                <br/><br/>
+            </p>
+            </div>    
+            </field>
+    
+        </record>
+
+    <function name="write" model="ir.model.data">
+        <function name="search" model="ir.model.data">
+            <value eval="[('name','=','email_template_edi_sale'),('module','=','sale')]"/>
+        </function>
+         <value eval=" {'noupdate': True} "/>
+    </function>
+    
+</odoo>

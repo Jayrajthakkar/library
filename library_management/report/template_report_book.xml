@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   <data> 
+    <template id="report_sale_history_book">
+        <t t-call="web.external_layout">
+            <div class="page">
+                <div class="oe_structure"/>
+                <h2 class="mt16">
+                     <span t-field="doc.book_name"/>    
+                </h2> 
+                <div class="row mt32 mb32">
+                    <div  class="col-auto col-3 mw-100 mb-2 mt-2">
+                        <strong>Author Name:</strong>
+                        <p class="m-0" t-field="doc.author"/>
+                    </div>
+                    <div  class="col-auto col-3 mw-100 mb-2 mt-2">
+                        <strong>ISBN :</strong>
+                        <p class="m-0" t-field="doc.isbn"/>
+                    </div>
+                </div>   
+            </div>
+            <table class="table table-bordered" >
+                <thead style="display: table-row-group">
+                    <tr>
+                        <th class="text-left">Visitor</th>
+                        <th class="text-left">Quantity</th>
+                        <th class="text-left">Book Price</th>
+                        <th class="text-left">Amount</th>
+                    </tr>
+                </thead>
+                 <tr t-foreach="doc.sale_history_ids" t-as="history">
+                    <td><t t-out="history.visitor_id.name" /></td>
+                    <td><t t-out="history.quantity" /></td>
+                    <td><t t-out="history.price" /></td>
+                    <td><t t-out="history.subtotal" /></td>
+                </tr>
+                <tr class="is-subtotal text-right">
+                    <td name="td_section_subtotal" colspan="99">
+                        <strong class="mr16">Total</strong>
+                        <span t-out="doc.total" class="ml-3"/>
+                    </td>
+                </tr>              
+            </table>   
+
+
+        </t>    
+
+    </template>
+
+    <template id="report_book">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="library_management.report_sale_history_book"/>
+            </t>
+        </t>
+    
+    </template>
+   </data> 
+</odoo>
